@@ -9,15 +9,10 @@ import SwiftUI
 
 struct ContentView: View {
     @State var isLoaded: Bool = false
+    
     var body: some View {
         if isLoaded {
-            VStack {
-                Image(systemName: "globe")
-                    .imageScale(.large)
-                    .foregroundStyle(.tint)
-                Text("Hello, world!")
-            }
-            .padding()
+            DataList()
         } else {
             LoadView(isLoaded: $isLoaded)
         }
