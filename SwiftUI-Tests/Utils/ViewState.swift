@@ -7,6 +7,6 @@
 
 import Foundation
 
-enum State {
+enum ViewState {
     case loading, ready, error
 }
