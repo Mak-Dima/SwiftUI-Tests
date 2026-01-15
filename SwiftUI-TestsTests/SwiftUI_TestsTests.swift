@@ -6,12 +6,20 @@
 //
 
 import Testing
+import Foundation
 @testable import SwiftUI_Tests
 
 struct SwiftUI_TestsTests {
 
-    @Test func example() async throws {
-        // Write your test here and use APIs like `#expect(...)` to check expected conditions.
+    @Test("Mock HTTP Service test initialization.") func mockHTTPService() {
+        let mockData = Data([1, 2, 3])
+        let mockService = MockHTTPService(with: mockData)
+        
+        do {
+            let data = try mockService.fetchData()
+            #expect(type(of: data) == Data.self)
+            #expect(!data.isEmpty)
+        } catch { }
     }
 
 }
