@@ -11,7 +11,7 @@ import Foundation
 
 struct SwiftUI_TestsTests {
 
-    @Test("Mock HTTP Service test initialization.") func mockHTTPService() {
+    @Test("Mock HTTP Service test initialization with data.") func mockHTTPServiceInit() {
         let mockData = Data([1, 2, 3])
         let mockService = MockHTTPService(with: mockData)
         
@@ -22,4 +22,12 @@ struct SwiftUI_TestsTests {
         } catch { }
     }
 
+}
+
+@Test("Mock HTTP Service test fetch throws and error.") func MockHTTPServiceFetchDataThrows() throws {
+    let mockService = MockHTTPService(throw: true)
+
+    #expect(throws: NSError.self, "Error wasn't thrown") {
+        try mockService.fetchData()
+    }
 }

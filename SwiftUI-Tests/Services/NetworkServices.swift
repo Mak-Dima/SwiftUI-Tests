@@ -13,15 +13,19 @@ protocol NetworkServices {
 
 final class MockHTTPService: NetworkServices {
     
-    var data: Data?
+    var data: Data
+    var error: Bool = false
     
-    init(with data: Data? = nil) {
-        let unwrapped = data ?? Data()
-        self.data = unwrapped
+    init(with data: Data = Data(), throw error: Bool = false) {
+        self.data = data
+        self.error = error
     }
     
     func fetchData() throws -> Data {
-        let data = self.data ?? Data()
-        return data
+        if self.error {
+            throw NSError(domain: "Test", code: 0, userInfo: nil)
+        }
+        
+        return self.data
     }
 }
