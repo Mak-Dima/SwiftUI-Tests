@@ -39,6 +39,7 @@ struct DataList: View {
                 }
             }
             .scrollContentBackground(.hidden)
+            .accessibilityIdentifier("id_DataList")
             
             
             Button {

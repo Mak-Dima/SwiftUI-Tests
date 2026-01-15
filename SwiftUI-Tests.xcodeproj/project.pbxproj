@@ -27,6 +27,7 @@
 		236058202F15C5D8008739C0 /* SwiftUI-Tests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUI-Tests.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2360582D2F15C5D9008739C0 /* SwiftUI-TestsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SwiftUI-TestsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		236058372F15C5D9008739C0 /* SwiftUI-TestsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SwiftUI-TestsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		23FA8D372F18642C007D519F /* SwiftUI-Tests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "SwiftUI-Tests.xctestplan"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -75,6 +76,7 @@
 		236058172F15C5D8008739C0 = {
 			isa = PBXGroup;
 			children = (
+				23FA8D372F18642C007D519F /* SwiftUI-Tests.xctestplan */,
 				236058222F15C5D8008739C0 /* SwiftUI-Tests */,
 				236058302F15C5D9008739C0 /* SwiftUI-TestsTests */,
 				2360583A2F15C5D9008739C0 /* SwiftUI-TestsUITests */,

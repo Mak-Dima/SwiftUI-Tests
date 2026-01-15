@@ -7,6 +7,7 @@
 
 import XCTest
 
+
 final class SwiftUI_TestsUITests: XCTestCase {
 
     override func setUpWithError() throws {
@@ -23,10 +24,17 @@ final class SwiftUI_TestsUITests: XCTestCase {
     }
 
     @MainActor
-    func testExample() throws {
+    func testAppFlow() throws {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
+        
+        let loadButton = app.buttons["id_LoadButton"]
+        loadButton.tap()
+        
+        let dataList = app.collectionViews["id_DataList"]
+        XCTAssert(dataList.waitForExistence(timeout: 3), "List does not exists.")
+        XCTAssert(dataList.staticTexts.count > 0, "Text fields does not match.")
 
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }

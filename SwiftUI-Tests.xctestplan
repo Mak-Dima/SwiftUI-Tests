@@ -1,0 +1,38 @@
+{
+  "configurations" : [
+    {
+      "id" : "E3C67C49-3B09-4CEC-BC4B-5E61C5FBC3B3",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "performanceAntipatternCheckerEnabled" : true,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:SwiftUI-Tests.xcodeproj",
+      "identifier" : "2360581F2F15C5D8008739C0",
+      "name" : "SwiftUI-Tests"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:SwiftUI-Tests.xcodeproj",
+        "identifier" : "2360582C2F15C5D9008739C0",
+        "name" : "SwiftUI-TestsTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:SwiftUI-Tests.xcodeproj",
+        "identifier" : "236058362F15C5D9008739C0",
+        "name" : "SwiftUI-TestsUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

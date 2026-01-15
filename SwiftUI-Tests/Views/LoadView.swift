@@ -19,6 +19,7 @@ struct LoadView: View {
             } label: {
                 Text("Load")
             }
+            .accessibilityIdentifier("id_LoadButton")
         }
         .buttonStyle(.borderedProminent)
     }
