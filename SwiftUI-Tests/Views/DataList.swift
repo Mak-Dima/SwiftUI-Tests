@@ -8,56 +8,34 @@
 import SwiftUI
 
 struct DataList: View {
-    @State var state: ViewState = .loading
-    let data: [String] = [
-        "data 1",
-        "data 2",
-        "data 3",
-        "data 4",
-        "data 5",
-        "data 8",
-        "data 9",
-        "data 10",
-        "data 11",
-        "data 12",
-        "data 13",
-        "data 14",
-        "data 15",
-        "data 16",
-        "data 17",
-        "data 18",
-        "data 19",
-        "data 20",
-        "data 21",
-        "data 22",
-    ]
+    
+    @StateObject var viewModel: DataListViewModel
+    
+    init(vm: DataListViewModel) {
+        _viewModel = StateObject(wrappedValue: vm)
+    }
     
     var body: some View {
-        switch state {
+        switch viewModel.state {
             case .loading:
                 ProgressView()
                 .scaleEffect(1.5)
-            
+                .task {
+                    await viewModel.loadData()
+                }
+
             case .error:
                 Text("Error")
                 
             case .ready:
                 VStack(spacing: 5) {
                     List {
-                        ForEach(data, id: \.self) { item in
+                        ForEach(viewModel.data, id: \.self) { item in
                             Text(item)
                         }
                     }
                     .scrollContentBackground(.hidden)
                     .accessibilityIdentifier("id_DataList")
-                    
-                    
-                    Button {
-                        print("Refresh pressed.")
-                    } label: {
-                        Text("Refresh")
-                    }
-                    .padding(10)
                 }
                 .background(Color(.systemGray5))
                 .buttonStyle(.borderedProminent)
@@ -68,5 +46,8 @@ struct DataList: View {
 }
 
 #Preview {
-    DataList()
+    let mockData = try! JSONEncoder().encode(["data 1", "data 2", "data 3", "data 4", "data 5"])
+    let service = MockHTTPService(with: mockData)
+    let viewModel = DataListViewModel(service: service)
+    DataList(vm: viewModel)
 }

@@ -10,9 +10,10 @@ import SwiftUI
 struct ContentView: View {
     @State var isLoaded: Bool = false
     
+    
     var body: some View {
         if isLoaded {
-            DataList()
+//            DataList()
         } else {
             LoadView(isLoaded: $isLoaded)
         }

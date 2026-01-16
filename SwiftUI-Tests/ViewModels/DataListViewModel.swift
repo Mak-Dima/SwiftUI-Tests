@@ -24,7 +24,9 @@ class DataListViewModel: ObservableObject {
             let data = try await httpService.fetchData()
             let decodedData = try JSONDecoder().decode([String].self, from: data)
             self.data = decodedData
+            self.state = .ready
         } catch {
+            self.state = .error
             self.error = error
         }
     }
