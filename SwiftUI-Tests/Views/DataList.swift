@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct DataList: View {
+    @State var state: ViewState = .loading
     let data: [String] = [
         "data 1",
         "data 2",
@@ -32,27 +33,37 @@ struct DataList: View {
     ]
     
     var body: some View {
-        VStack(spacing: 5) {
-            List {
-                ForEach(data, id: \.self) { item in
-                    Text(item)
+        switch state {
+            case .loading:
+                ProgressView()
+                .scaleEffect(1.5)
+            
+            case .error:
+                Text("Error")
+                
+            case .ready:
+                VStack(spacing: 5) {
+                    List {
+                        ForEach(data, id: \.self) { item in
+                            Text(item)
+                        }
+                    }
+                    .scrollContentBackground(.hidden)
+                    .accessibilityIdentifier("id_DataList")
+                    
+                    
+                    Button {
+                        print("Refresh pressed.")
+                    } label: {
+                        Text("Refresh")
+                    }
+                    .padding(10)
                 }
-            }
-            .scrollContentBackground(.hidden)
-            .accessibilityIdentifier("id_DataList")
-            
-            
-            Button {
-                print("Refresh pressed.")
-            } label: {
-                Text("Refresh")
-            }
-            .padding(10)
+                .background(Color(.systemGray5))
+                .buttonStyle(.borderedProminent)
+                .buttonBorderShape(.roundedRectangle)
+                .buttonSizing(.flexible)
         }
-        .background(Color(.systemGray5))
-        .buttonStyle(.borderedProminent)
-        .buttonBorderShape(.roundedRectangle)
-        .buttonSizing(.flexible)
     }
 }
 
