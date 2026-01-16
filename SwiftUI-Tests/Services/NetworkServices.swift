@@ -8,7 +8,7 @@
 import Foundation
 
 protocol NetworkServices {
-    func fetchData() throws -> Data
+    func fetchData() async throws -> Data
 }
 
 final class MockHTTPService: NetworkServices {
@@ -21,7 +21,7 @@ final class MockHTTPService: NetworkServices {
         self.error = error
     }
     
-    func fetchData() throws -> Data {
+    func fetchData() async throws -> Data {
         if self.error {
             throw NSError(domain: "Test", code: 0, userInfo: nil)
         }
