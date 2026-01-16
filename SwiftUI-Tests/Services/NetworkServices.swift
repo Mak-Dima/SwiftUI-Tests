@@ -22,6 +22,7 @@ final class MockHTTPService: NetworkService {
     }
     
     func fetchData() async throws -> Data {
+        try await Task.sleep(for: .seconds(3)) 
         if self.error {
             throw NSError(domain: "Test", code: 0, userInfo: nil)
         }
