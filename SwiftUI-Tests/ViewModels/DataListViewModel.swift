@@ -13,9 +13,9 @@ class DataListViewModel: ObservableObject {
     @Published var data: [String] = []
     @Published var error: Error?
     
-    let httpService: NetworkServices
+    let httpService: NetworkService
     
-    init(service: NetworkServices) {
+    init(service: NetworkService) {
         self.httpService = service
     }
     

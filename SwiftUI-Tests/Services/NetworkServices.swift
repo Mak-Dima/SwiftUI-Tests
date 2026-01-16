@@ -7,11 +7,11 @@
 
 import Foundation
 
-protocol NetworkServices {
+protocol NetworkService {
     func fetchData() async throws -> Data
 }
 
-final class MockHTTPService: NetworkServices {
+final class MockHTTPService: NetworkService {
     
     var data: Data
     var error: Bool = false
