@@ -12,15 +12,6 @@ struct ContentView: View {
     
     var service: NetworkService
     
-    init() {
-        if CommandLine.arguments.contains("--ui-testing") {
-            let data = try! JSONEncoder().encode(previewDataObjects)
-            service = MockHTTPService(with: data)
-        } else {
-            service = HTTPService()
-        }
-    }
-    
     var body: some View {
         if isLoaded {
             DataList(service: service)
@@ -31,5 +22,6 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    let service = MockHTTPService()
+    ContentView(service: service)
 }
