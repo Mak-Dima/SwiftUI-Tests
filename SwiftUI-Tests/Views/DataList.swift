@@ -44,7 +44,7 @@ struct DataList: View {
 }
 
 #Preview("Ready") {
-    let mockData = try! JSONEncoder().encode(["data 1", "data 2", "data 3", "data 4", "data 5"])
+    let mockData = try! JSONEncoder().encode(previewDataObjects)
     let service = MockHTTPService(with: mockData)
     DataList(service: service)
 }

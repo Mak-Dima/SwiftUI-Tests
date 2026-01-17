@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct DataObject: Identifiable, Hashable, Decodable {
+struct DataObject: Identifiable, Hashable, Decodable, Encodable {
     var id: String
     var name: String
 }
