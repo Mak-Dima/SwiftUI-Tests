@@ -18,11 +18,10 @@
   },
   "testTargets" : [
     {
-      "parallelizable" : true,
       "target" : {
         "containerPath" : "container:SwiftUI-Tests.xcodeproj",
-        "identifier" : "2360582C2F15C5D9008739C0",
-        "name" : "SwiftUI-TestsTests"
+        "identifier" : "236018C52F1C13D500E63493",
+        "name" : "SwiftUI-TestsIntegrationTest"
       }
     },
     {
@@ -31,6 +30,14 @@
         "containerPath" : "container:SwiftUI-Tests.xcodeproj",
         "identifier" : "236058362F15C5D9008739C0",
         "name" : "SwiftUI-TestsUITests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:SwiftUI-Tests.xcodeproj",
+        "identifier" : "2360582C2F15C5D9008739C0",
+        "name" : "SwiftUI-TestsTests"
       }
     }
   ],

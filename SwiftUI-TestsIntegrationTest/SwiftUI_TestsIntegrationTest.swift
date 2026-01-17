@@ -1,8 +1,8 @@
 //
-//  DataListVIewModelIntegrationTests.swift
-//  SwiftUI-TestsTests
+//  SwiftUI_TestsIntegrationTest.swift
+//  SwiftUI-TestsIntegrationTest
 //
-//  Created by Dmytro Maksiutenko on 2026-01-15.
+//  Created by Dmytro Maksiutenko on 2026-01-17.
 //
 
 import Testing
@@ -10,16 +10,16 @@ import Foundation
 @testable import SwiftUI_Tests
 
 @MainActor
-struct DataListVIewModelIntegrationTests {
+struct SwiftUI_TestsIntegrationTest {
 
     @Test("Test DataListViewModel integration with network service.")
     func testViewModelIntegrationWithNetwork() async throws {
-        let mockData = try JSONEncoder().encode(["1", "2", "3"])
+        let mockData = try JSONEncoder().encode(previewDataObjects)
         let mockService = MockHTTPService(with: mockData)
         let viewModel = DataListViewModel(service: mockService)
         
         await viewModel.loadData()
-        #expect(viewModel.data == ["1", "2", "3"])
+        #expect(viewModel.data == previewDataObjects)
     }
     
     @Test()
@@ -30,5 +30,4 @@ struct DataListVIewModelIntegrationTests {
         await viewModel.loadData()
         #expect(viewModel.error != nil)
     }
-
 }
