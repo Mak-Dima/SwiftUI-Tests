@@ -14,12 +14,12 @@ struct SwiftUI_TestsTests {
 
     @Test("Mock HTTP Service test initialization with data.")
     func mockHTTPServiceInit() async {
-        let mockData = Data([1, 2, 3])
+        let mockData = try! JSONEncoder().encode(previewDataObjects)
         let mockService = MockHTTPService(with: mockData)
         
         do {
             let data = try await mockService.fetchData()
-            #expect(type(of: data) == Data.self)
+            #expect(type(of: data) == [DataObject].self)
             #expect(!data.isEmpty)
         } catch { }
     }

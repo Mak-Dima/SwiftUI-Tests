@@ -22,9 +22,7 @@ class DataListViewModel: ObservableObject {
     
     func loadData() async {
         do {
-            let data = try await service.fetchData()
-            let decodedData = try JSONDecoder().decode([DataObject].self, from: data)
-            self.data = decodedData
+            self.data = try await service.fetchData()
             self.state = .ready
         } catch {
             self.state = .error
