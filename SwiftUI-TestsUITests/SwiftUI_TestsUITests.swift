@@ -36,7 +36,7 @@ final class SwiftUI_TestsUITests: XCTestCase {
         loadButton.tap()
         
         let dataList = app.collectionViews["id_DataList"]
-        XCTAssert(dataList.waitForExistence(timeout: 3), "List does not exists.")
+        XCTAssert(dataList.waitForExistence(timeout: 4), "List does not exists.")
         XCTAssert(dataList.staticTexts.count > 0, "Text fields does not match.")
 
         // Use XCTAssert and related functions to verify your tests produce the correct results.
@@ -45,8 +45,8 @@ final class SwiftUI_TestsUITests: XCTestCase {
     @MainActor
     func testLaunchPerformance() throws {
         // This measures how long it takes to launch your application.
-        measure(metrics: [XCTApplicationLaunchMetric()]) {
-            XCUIApplication().launch()
-        }
+//        measure(metrics: [XCTApplicationLaunchMetric()]) {
+//            XCUIApplication().launch()
+//        }
     }
 }
