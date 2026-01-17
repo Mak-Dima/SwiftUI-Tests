@@ -6,6 +6,8 @@
 //
 
 import XCTest
+import Foundation
+@testable import SwiftUI_Tests
 
 
 final class SwiftUI_TestsUITests: XCTestCase {
@@ -27,6 +29,7 @@ final class SwiftUI_TestsUITests: XCTestCase {
     func testAppFlow() throws {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
+        app.launchArguments.append("--ui-testing")
         app.launch()
         
         let loadButton = app.buttons["id_LoadButton"]

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DataList: View {
     
-    @StateObject var viewModel: DataListViewModel
+    @StateObject private var viewModel: DataListViewModel
     
     init(service: NetworkService) {
         _viewModel = StateObject(wrappedValue: DataListViewModel(service: service))
@@ -25,7 +25,7 @@ struct DataList: View {
                 }
 
             case .error:
-            ErrorView(message: viewModel.error!.localizedDescription)
+                ErrorView(message: viewModel.error?.localizedDescription ?? "Unknown error")
             
             case .ready:
                 VStack(spacing: 5) {
