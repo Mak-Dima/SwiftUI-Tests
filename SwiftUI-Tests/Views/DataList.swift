@@ -25,8 +25,8 @@ struct DataList: View {
                 }
 
             case .error:
-                Text("Error")
-                
+            ErrorView(message: viewModel.error!.localizedDescription)
+            
             case .ready:
                 VStack(spacing: 5) {
                     List {
@@ -45,9 +45,15 @@ struct DataList: View {
     }
 }
 
-#Preview {
+#Preview("Ready") {
     let mockData = try! JSONEncoder().encode(["data 1", "data 2", "data 3", "data 4", "data 5"])
     let service = MockHTTPService(with: mockData)
+    let viewModel = DataListViewModel(service: service)
+    DataList(vm: viewModel)
+}
+
+#Preview("Error") {
+    let service = MockHTTPService(throw: true)
     let viewModel = DataListViewModel(service: service)
     DataList(vm: viewModel)
 }
