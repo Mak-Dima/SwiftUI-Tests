@@ -10,10 +10,11 @@ import SwiftUI
 struct ContentView: View {
     @State var isLoaded: Bool = false
     
+    let service = HTTPService()
     
     var body: some View {
         if isLoaded {
-//            DataList()
+            DataList(service: service)
         } else {
             LoadView(isLoaded: $isLoaded)
         }

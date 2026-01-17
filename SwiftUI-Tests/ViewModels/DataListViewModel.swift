@@ -10,7 +10,7 @@ internal import Combine
 
 class DataListViewModel: ObservableObject {
     @Published var state: ViewState = .loading
-    @Published var data: [String] = []
+    @Published var data: [[String: String]] = []
     @Published var error: Error?
     
     let httpService: NetworkService
@@ -22,7 +22,7 @@ class DataListViewModel: ObservableObject {
     func loadData() async {
         do {
             let data = try await httpService.fetchData()
-            let decodedData = try JSONDecoder().decode([String].self, from: data)
+            let decodedData = try JSONDecoder().decode([[String: String]].self, from: data)
             self.data = decodedData
             self.state = .ready
         } catch {

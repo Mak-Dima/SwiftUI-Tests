@@ -11,8 +11,8 @@ struct DataList: View {
     
     @StateObject var viewModel: DataListViewModel
     
-    init(vm: DataListViewModel) {
-        _viewModel = StateObject(wrappedValue: vm)
+    init(service: NetworkService) {
+        _viewModel = StateObject(wrappedValue: DataListViewModel(service: service))
     }
     
     var body: some View {
@@ -31,7 +31,7 @@ struct DataList: View {
                 VStack(spacing: 5) {
                     List {
                         ForEach(viewModel.data, id: \.self) { item in
-                            Text(item)
+                            Text(item["name"]!)
                         }
                     }
                     .scrollContentBackground(.hidden)
@@ -48,12 +48,10 @@ struct DataList: View {
 #Preview("Ready") {
     let mockData = try! JSONEncoder().encode(["data 1", "data 2", "data 3", "data 4", "data 5"])
     let service = MockHTTPService(with: mockData)
-    let viewModel = DataListViewModel(service: service)
-    DataList(vm: viewModel)
+    DataList(service: service)
 }
 
 #Preview("Error") {
     let service = MockHTTPService(throw: true)
-    let viewModel = DataListViewModel(service: service)
-    DataList(vm: viewModel)
+    DataList(service: service)
 }
