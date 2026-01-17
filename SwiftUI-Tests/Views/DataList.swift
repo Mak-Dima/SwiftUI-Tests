@@ -29,10 +29,8 @@ struct DataList: View {
             
             case .ready:
                 VStack(spacing: 5) {
-                    List {
-                        ForEach(viewModel.data, id: \.self) { item in
-                            Text(item["name"]!)
-                        }
+                    List(viewModel.data) { item in
+                        Text(item.name)
                     }
                     .scrollContentBackground(.hidden)
                     .accessibilityIdentifier("id_DataList")
