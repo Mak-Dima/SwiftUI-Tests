@@ -20,11 +20,11 @@ struct ErrorView: View {
             .frame(maxWidth: 300, maxHeight: 300)
             .background{
                 RoundedRectangle(cornerRadius: 15)
-                    .foregroundStyle(Color.white.opacity(0.2))
+                    .foregroundStyle(Color.gray.opacity(0.2))
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.white.opacity(0.6))
+        .background(Color.gray.opacity(0.6))
     }
 }
 
