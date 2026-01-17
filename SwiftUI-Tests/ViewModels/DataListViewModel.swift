@@ -8,20 +8,21 @@
 import Foundation
 internal import Combine
 
+@MainActor
 class DataListViewModel: ObservableObject {
-    @Published var state: ViewState = .loading
-    @Published var data: [DataObject] = []
-    @Published var error: Error?
+    @Published private(set) var state: ViewState = .loading
+    @Published private(set) var data: [DataObject] = []
+    @Published private(set) var error: Error? = nil
     
-    let httpService: NetworkService
+    private let service: NetworkService
     
     init(service: NetworkService) {
-        self.httpService = service
+        self.service = service
     }
     
     func loadData() async {
         do {
-            let data = try await httpService.fetchData()
+            let data = try await service.fetchData()
             let decodedData = try JSONDecoder().decode([DataObject].self, from: data)
             self.data = decodedData
             self.state = .ready
