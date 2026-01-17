@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @State var isLoaded: Bool = false
     
-    var service: NetworkService
+    let service: NetworkService
     
     var body: some View {
         if isLoaded {
